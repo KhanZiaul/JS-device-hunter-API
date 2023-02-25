@@ -13,6 +13,19 @@ function showDatas(datas) {
 
     const showPhones = document.getElementById('showPhones');
 
+    const errorMessage = document.getElementById('error-message');
+
+    if(datas.length === 0){
+
+        errorMessage.classList.remove('hidden');
+    }
+
+    else{
+
+        errorMessage.classList.add('hidden');
+
+    }
+
     showPhones.innerText = "";
 
     datas.forEach(data => {
@@ -56,4 +69,4 @@ document.getElementById('search-button').addEventListener('click', function () {
     document.getElementById('search-input').value = "";
 });
 
-loadData();
+// loadData();
