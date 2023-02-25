@@ -1,6 +1,6 @@
-const loadData = async () => {
+const loadData = async (searchInput) => {
 
-    url = `https://openapi.programming-hero.com/api/phones?search=iphone`
+    url = `https://openapi.programming-hero.com/api/phones?search=${searchInput}`
 
     const res = await fetch(url);
 
@@ -12,6 +12,8 @@ const loadData = async () => {
 function showDatas(datas) {
 
     const showPhones = document.getElementById('showPhones');
+
+    showPhones.innerText = "";
 
     datas.forEach(data => {
 
@@ -44,5 +46,14 @@ function showDatas(datas) {
     });
 
 }
+
+document.getElementById('search-button').addEventListener('click', function () {
+
+    const searchInput = document.getElementById('search-input').value;
+
+    loadData(searchInput);
+
+    document.getElementById('search-input').value = "";
+});
 
 loadData();
