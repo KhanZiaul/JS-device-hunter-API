@@ -15,12 +15,12 @@ function showDatas(datas) {
 
     const errorMessage = document.getElementById('error-message');
 
-    if(datas.length === 0){
+    if (datas.length === 0) {
 
         errorMessage.classList.remove('hidden');
     }
 
-    else{
+    else {
 
         errorMessage.classList.add('hidden');
 
@@ -58,6 +58,8 @@ function showDatas(datas) {
 
     });
 
+    isSpinner(false);
+
 }
 
 document.getElementById('search-button').addEventListener('click', function () {
@@ -66,7 +68,25 @@ document.getElementById('search-button').addEventListener('click', function () {
 
     loadData(searchInput);
 
+    isSpinner(true);
+
     document.getElementById('search-input').value = "";
+
 });
+
+const spinner = document.getElementById('spinner');
+
+function isSpinner(isSpin) {
+
+    if (isSpin) {
+
+        spinner.classList.remove('hidden');
+    }
+
+    else {
+
+        spinner.classList.add('hidden');
+    }
+}
 
 // loadData();

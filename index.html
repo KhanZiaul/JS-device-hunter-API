@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -14,14 +14,15 @@
 
     <header>
 
-        <h2 class="text-center text-5xl my-7 fony-bold">WELCOME PHONE HUNTER!!!</h2>
+        <h2 class="text-center text-5xl my-7 fony-bold text-white">WELCOME PHONE HUNTER!!!</h2>
 
     </header>
 
     <main>
 
         <section class="flex justify-center gap-6 my-10">
-            <input id="search-input" type="text" placeholder="Search here..." class="block input input-bordered input-warning w-full max-w-xs" />
+            <input id="search-input" type="text" placeholder="Search here..."
+                class="block input input-bordered input-warning w-full max-w-xs" />
             <button id="search-button" class="block btn btn-outline btn-secondary">Search</button>
         </section>
 
@@ -33,8 +34,23 @@
             </div>
 
             <div>
-                <h2 id="error-message" class="hidden text-2xl font-bold text-center">Sorry , No phones found !!! Please search again...</h2>
+                <h2 id="error-message" class="hidden text-2xl font-bold text-center">Sorry , No phones found !!! Please
+                    search again...</h2>
             </div>
+
+            <div id="spinner" class="hidden">
+                <div class="flex items-center justify-center">
+                    <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                        role="status">
+                        <span
+                            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+
 
         </section>
     </main>
