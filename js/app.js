@@ -160,6 +160,22 @@ document.getElementById('search-button').addEventListener('click', function () {
 
 });
 
+// add enter key handler with search input
+
+document.getElementById('search-input').addEventListener('keypress', function (e) {
+
+    console.log(e);
+    if (e.key === 'Enter') {
+
+        const searchInput = document.getElementById('search-input').value;
+
+       searchText = searchInput;
+
+       loadData(searchInput);
+
+    }
+});
+
 
 // show hide datas fuction
 
