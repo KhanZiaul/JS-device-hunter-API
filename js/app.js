@@ -1,3 +1,5 @@
+let searchText = "";
+
 const loadData = async (searchInput) => {
 
     url = `https://openapi.programming-hero.com/api/phones?search=${searchInput}`
@@ -12,6 +14,22 @@ const loadData = async (searchInput) => {
 function showDatas(datas) {
 
     const showPhones = document.getElementById('showPhones');
+
+    const showBtn = document.getElementById('showBtn');
+
+    if (datas.length > 10) {
+
+        datas = datas.slice(0, 10);
+
+        console.log(datas);
+
+        showBtn.classList.remove('hidden')
+    }
+
+    else {
+
+        showBtn.classList.add('hidden')
+    }
 
     const errorMessage = document.getElementById('error-message');
 
@@ -62,17 +80,34 @@ function showDatas(datas) {
 
 }
 
-document.getElementById('search-button').addEventListener('click', function () {
 
-    const searchInput = document.getElementById('search-input').value;
+    document.getElementById('search-button').addEventListener('click', function () {
 
-    loadData(searchInput);
+        const searchInput = document.getElementById('search-input').value;
 
-    isSpinner(true);
+        searchText = searchInput;
 
-    document.getElementById('search-input').value = "";
+        console.log(searchText);
 
-});
+        loadData(searchInput);
+
+        isSpinner(true);
+
+        document.getElementById('search-input').value = "";
+
+    });
+
+const showAll = () => {
+
+    url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
+
+    fetch(url)
+        .then(res => res.json())
+        .the(datas => showDatas(datas));
+}
+
+
+
 
 const spinner = document.getElementById('spinner');
 
