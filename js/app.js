@@ -28,8 +28,6 @@ function showDatas(datas) {
 
         datas = datas.slice(0, 10);
 
-        console.log(datas);
-
         showBtn.classList.remove('hidden')
     }
 
@@ -71,15 +69,16 @@ function showDatas(datas) {
                 </figure>
                 <div class="card-body items-center text-center">
                   <h2 class="card-title mb-2"> ${data.phone_name}</h2>
-                  <p class="mb-2">${data.slug}</p>
                   <div class="card-actions">
-                    <button class="btn btn-primary">Buy Now</button>
+
+                    <a onclick="showDetails('${data.slug}')" href="#phone-details-modal" class="btn btn-primary">Show Details</a>
+
                   </div>
         `;
 
         showPhones.appendChild(createDiv);
 
-        console.group(data.slug);
+        console.group(data);
 
     });
 
@@ -128,9 +127,10 @@ function showHideDatas(datas) {
                 </figure>
                 <div class="card-body items-center text-center">
                   <h2 class="card-title mb-2"> ${data.phone_name}</h2>
-                  <p class="mb-2">${data.slug}</p>
                   <div class="card-actions">
-                    <button class="btn btn-primary">Buy Now</button>
+
+                  <a onclick="showDetails('${data.slug}')" href="#phone-details-modal" class="btn btn-primary">Show Details</a>
+
                   </div>
         `;
 
@@ -143,6 +143,42 @@ function showHideDatas(datas) {
     isSpinner(false);
 
 }
+
+// modal function
+
+
+function showDetails(showDetails) {
+
+
+
+    url = `https://openapi.programming-hero.com/api/phone/${showDetails}`
+
+    fetch(url)
+
+        .then(res => res.json())
+
+        .then(data => showModalData(data.data))
+
+}
+
+// modal innerTEXT
+
+function showModalData(data) {
+
+    document.getElementById('phoneName').innerText = data.name;
+
+    document.getElementById('chipSet').innerText = data.mainFeatures.chipSet;
+
+    document.getElementById('displaySize').innerText = data.mainFeatures.displaySize;
+
+    document.getElementById('storage').innerText = data.mainFeatures.storage;
+
+    document.getElementById('memory').innerText = data.mainFeatures.memory;
+
+    console.log(data.name);
+
+}
+
 
 // get search input value
 
@@ -160,6 +196,7 @@ document.getElementById('search-button').addEventListener('click', function () {
 
 });
 
+
 // add enter key handler with search input
 
 document.getElementById('search-input').addEventListener('keypress', function (e) {
@@ -169,9 +206,9 @@ document.getElementById('search-input').addEventListener('keypress', function (e
 
         const searchInput = document.getElementById('search-input').value;
 
-       searchText = searchInput;
+        searchText = searchInput;
 
-       loadData(searchInput);
+        loadData(searchInput);
 
     }
 });
