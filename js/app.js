@@ -24,9 +24,9 @@ function showDatas(datas) {
 
     const showBtn = document.getElementById('showBtn');
 
-    if (datas.length > 10) {
+    if (datas.length > 12) {
 
-        datas = datas.slice(0, 10);
+        datas = datas.slice(0, 12);
 
         showBtn.classList.remove('hidden')
     }
@@ -165,15 +165,15 @@ function showDetails(showDetails) {
 
 function showModalData(data) {
 
-    document.getElementById('phoneName').innerText = data.name;
+    document.getElementById('phoneName').innerText = data?.name;
 
-    document.getElementById('chipSet').innerText = data.mainFeatures.chipSet;
+    document.getElementById('chipSet').innerText = data?.mainFeatures?.chipSet;
 
-    document.getElementById('displaySize').innerText = data.mainFeatures.displaySize;
+    document.getElementById('displaySize').innerText = data?.mainFeatures?.displaySize;
 
-    document.getElementById('storage').innerText = data.mainFeatures.storage;
+    document.getElementById('storage').innerText = data?.mainFeatures?.storage;
 
-    document.getElementById('memory').innerText = data.mainFeatures.memory;
+    document.getElementById('memory').innerText = data?.mainFeatures?.memory;
 
     console.log(data.name);
 
